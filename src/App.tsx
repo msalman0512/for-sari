@@ -112,6 +112,7 @@ function App() {
                   <button
                     className="answer-button no"
                     onMouseEnter={runAwayNo}
+                    onClick={runAwayNo}
                     style={{
                       transform: `translate(${noOffset.x}px, ${noOffset.y}px)`,
                       transition: "transform 150ms ease-out",
