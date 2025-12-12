@@ -1,6 +1,8 @@
 import { useState } from "react";
 import confetti from "canvas-confetti";
 import Journey from "./Journey";
+import Landing from "./Landing";
+import HarmonyTree from "./HarmonyTree";
 
 // Helper function to parse **bold** syntax into React elements
 function parseText(text: string) {
@@ -16,9 +18,9 @@ function parseText(text: string) {
 const POEM_LINES = [
   "Siapa sangka, cukup satu purnama, dua insan yang belum saling sapa, kini selalu menanti waktu tuk berjumpa\nTak saling kenal namun takdir punya cara meramu, lewat 1 teman aku dituntun ke arahmu",
   "Kita bak sebuah niscaya, menyingkap banyak kesamaan kian tumbuh rasa percaya\nSelera kita pada durian dan floral berpadu memukau, hingga lelap pun kita kompak suka mengigau",
-  "Dari fajar menyapa hingga malam berkuasa, layar merekam masa, senyummu yang penuh rasa,\nmembuat jarak tak lagi punya kuasa, aku kamu menjadi kita yang penuh dengan asa",
-  "Kau adalah kabar yang tak pernah alpa menyapa, pengertianmu membuat segala raguku terlupa.\nSaat duniaku riuh kau hadir mendukung dan memberi kekuatan, membawa jiwaku selalu menemukan ketenangan",
-  "Pencarianku berhenti di sini, pada kamu yang kunanti, Yakinlah hati, kamulah satu-satunya yang ingin kuabadi.\n**Izinkan aku memintamu untuk tetap terus di sisi, Maukah kau menjadi kekasih hati, menua bersamaku hingga akhir nanti?**"
+  "Dari fajar menyapa hingga malam berkuasa, layar merekam masa, senyummu yang penuh rasa\nMembuat jarak tak lagi punya kuasa, aku kamu menjadi kita yang penuh dengan asa",
+  "Kau adalah kabar yang tak pernah alpa menyapa, pengertianmu membuat segala raguku terlupa\nSaat duniaku riuh kau hadir mendukung dan memberi kekuatan, membawa jiwaku selalu menemukan ketenangan",
+  "Pencarianku berhenti di sini, pada kamu yang kunanti, Yakinlah hati, kamulah satu-satunya yang ingin kuabadi\n**Izinkan aku memintamu untuk tetap terus di sisi, maukah kau menjadi kekasih hati, bersamaku hingga akhir nanti?**"
 ];
 
 function App() {
@@ -26,7 +28,7 @@ function App() {
   const [noOffset, setNoOffset] = useState({ x: 0, y: 0 });
   const [noClickCount, setNoClickCount] = useState(0);
   const [saidYes, setSaidYes] = useState(false);
-  const [currentPage, setCurrentPage] = useState<"poem" | "journey">("poem");
+  const [currentPage, setCurrentPage] = useState<"landing" | "poem" | "journey" | "tree">("landing");
 
   const goNext = () => {
     setIndex((prev) => (prev + 1) % POEM_LINES.length);
@@ -73,8 +75,21 @@ function App() {
     }, 200);
   };
 
+  if (currentPage === "landing") {
+    return <Landing onStart={() => setCurrentPage("poem")} />;
+  }
+
   if (currentPage === "journey") {
-    return <Journey onBack={() => setCurrentPage("poem")} />;
+    return (
+      <Journey 
+        onBack={() => setCurrentPage("poem")} 
+        onTree={() => setCurrentPage("tree")}
+      />
+    );
+  }
+
+  if (currentPage === "tree") {
+    return <HarmonyTree onBack={() => setCurrentPage("journey")} />;
   }
 
   return (
@@ -96,7 +111,7 @@ function App() {
                   <button className="answer-button yes" onClick={celebrateYes}>Yes</button>
                   <button
                     className="answer-button no"
-                    onClick={runAwayNo}
+                    onMouseEnter={runAwayNo}
                     style={{
                       transform: `translate(${noOffset.x}px, ${noOffset.y}px)`,
                       transition: "transform 150ms ease-out",

@@ -1,37 +1,98 @@
 // Sample events - replace photos with your own!
 const EVENTS = [
   {
-    date: "November 2024",
-    photo: "https://placehold.co/300x300/1e3a5f/white?text=Photo+1",
-    description: "The beginning of our story...",
+    date: "23 October 2025",
+    photo: "https://i.imgur.com/TZL0ysL.png",
+    description: "Krisan ngenalin kamu ke aku dan kamu juga mau kenalan",
   },
   {
-    date: "November 2024",
-    photo: "https://placehold.co/300x300/2d4a6f/white?text=Photo+2",
-    description: "Getting to know each other better.",
+    date: "3 November 2025",
+    photo: "https://i.imgur.com/qTzF3vy.png",
+    description: "Aku baru berani buat kenalan sama kamu",
   },
   {
-    date: "December 2024",
-    photo: "https://placehold.co/300x300/3d5a7f/white?text=Photo+3",
-    description: "Our first memorable moment together.",
+    date: "6 November 2025",
+    photo: "https://i.imgur.com/J1p5CMu.png",
+    description: "Kamu mau aku diwawancara, tapi sayangnya bukan sama kamu :(",
   },
   {
-    date: "December 2024",
-    photo: "https://placehold.co/300x300/4d6a8f/white?text=Photo+4",
-    description: "Creating more beautiful memories.",
+    date: "6 November 2025",
+    photo: "https://i.imgur.com/vGEmbvN.png",
+    description: "Ya aku minta ganti rewardlah buat tau nomer HP kamu",
   },
   {
-    date: "December 2024",
-    photo: "https://placehold.co/300x300/5d7a9f/white?text=Photo+5",
-    description: "And the journey continues... 💕",
+    date: "7 November 2025",
+    photo: "https://i.imgur.com/OKgtTEt.png",
+    description: "Main roblox bareng sampe pagi + sleep call pertama kali",
+  },
+  {
+    date: "8 November 2025",
+    photo: "https://i.imgur.com/E85fqjM.jpeg",
+    description: "Besokannya telfonan di discord sampe shubuh lagiii",
+  },
+  {
+    date: "8 November 2025",
+    photo: "https://i.imgur.com/s5NeTG9.png",
+    description: "Gombal pertamaku",
+  },
+  {
+    date: "8 November 2025",
+    photo: "https://i.imgur.com/xum0scD.png",
+    description: "First love reaction from youuu",
+  },
+  {
+    date: "10 November 2025",
+    photo: "https://i.imgur.com/Y1jNKg4.png",
+    description: "zdcscsf first sticker yang bikin baper dari kamu",
+  },
+  {
+    date: "12 November 2025",
+    photo: "https://i.imgur.com/pTG0pRm.png",
+    description: "Gemes banget, ini first photo yang gak one-time dari kamu",
+  },
+  {
+    date: "14 November 2025",
+    photo: "https://i.imgur.com/xLi1xVA.png",
+    description: "Video call pertama kalii",
+  },
+  {
+    date: "19 November 2025",
+    photo: "https://i.imgur.com/eIRWFqP.png",
+    description: "First time dipanggil sayang sama kamu dichat (harusnya udah manggil sayang duluan pas dicall siih)",
+  },
+  {
+    date: "25 November 2025",
+    photo: "https://i.imgur.com/R7OMNjk.png",
+    description: "HAHA momen unik kamu minum dari galon!",
+  },
+  {
+    date: "5 Desember 2025",
+    photo: "https://i.imgur.com/ud1W7hj.png",
+    description: "Diucapin selamat ulang tahun pake paper!!!",
+  },
+  {
+    date: "7 Desember 2025",
+    photo: "https://i.imgur.com/10zLRmz.png",
+    description: "Full of love dari kitaaa!!",
+  },
+  {
+    date: "8 November 2025 - sekarang",
+    photo: "https://i.imgur.com/KGkd5Ds.png",
+    description: "Sleep call tiap hariii <3",
+  },
+  {
+    date: "13 Desember 2025",
+    photo: "https://i.imgur.com/SDlUcBt.png",
+    description: "SOON!! I'm coming for youuuu",
   },
 ];
 
 interface JourneyProps {
   onBack: () => void;
+  onTree: () => void;
 }
 
-function Journey({ onBack }: JourneyProps) {
+function Journey({ onBack, onTree }: JourneyProps) {
   return (
     <div className="journey-page">
       <header className="journey-header">
@@ -82,6 +143,9 @@ function Journey({ onBack }: JourneyProps) {
 
       <div className="journey-footer">
         <p>...and many more memories to come 💕</p>
+        <button className="tree-button" onClick={onTree}>
+          🌳 See Our Tree of Harmony
+        </button>
       </div>
     </div>
   );
