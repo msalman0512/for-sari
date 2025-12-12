@@ -233,6 +233,49 @@ body {
   transform: translateY(0);
 }
 
+/* Confetti button at top center */
+.confetti-button {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: 2px solid #fbbf24;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+  transition: all 200ms ease;
+  animation: bounceIn 500ms ease-out;
+}
+
+.confetti-button:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+}
+
+.confetti-button:active {
+  transform: translateX(-50%) scale(0.98);
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 /* Splash-like text animation */
 @keyframes splashIn {
   0% {

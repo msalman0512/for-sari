@@ -49,11 +49,7 @@ function App() {
     setNoClickCount((prev) => prev + 1);
   };
 
-  const celebrateYes = () => {
-    // Hide the plea message and show journey button
-    setNoClickCount(0);
-    setSaidYes(true);
-    
+  const fireConfetti = () => {
     // Fire confetti from both sides
     confetti({
       particleCount: 100,
@@ -73,6 +69,13 @@ function App() {
         origin: { x: 0.5, y: 0.5 },
       });
     }, 200);
+  };
+
+  const celebrateYes = () => {
+    // Hide the plea message and show journey button
+    setNoClickCount(0);
+    setSaidYes(true);
+    fireConfetti();
   };
 
   if (currentPage === "landing") {
@@ -95,6 +98,13 @@ function App() {
   return (
     <div className="page">
       <div className="poem-shell">
+        {/* Confetti button - shows after saying Yes on last page */}
+        {saidYes && index === POEM_LINES.length - 1 && (
+          <button className="confetti-button" onClick={fireConfetti}>
+            Click This! 🎉
+          </button>
+        )}
+
         <main className="poem-main">
           {/* 
             Using key={index} forces React to remount this block on change,
